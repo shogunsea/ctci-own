@@ -47,9 +47,6 @@ public class Stack<E> {
 		while(!ins.isEmpty()){
 			System.out.println(ins.pop());
 		}
-		
-		
-		
-		
+
 	}
 }
