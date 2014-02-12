@@ -1,12 +1,13 @@
-public class Stack{
+// Stack implemented by single node.
+package Own;
+public class Stack<E>{
 	private class Node{
-		int value;
+		E value;
 		Node next;
-		Node(int v){
+		Node(E v){
 			this.value = v;
 		}
 	}
-
 	Node top;
 	int size;
 
@@ -14,12 +15,12 @@ public class Stack{
 		size = 0;
 	}
 
-	public Stack(int value){
+	public Stack(E value){
 		this.top = new Node(value);
 		size = 1;
 	}
 
-	public void push(int value){
+	public void push(E value){
 		Node newNode = new Node(value);
 		if(top==null){
 			top = newNode;
@@ -30,51 +31,46 @@ public class Stack{
 		size++;
 	}
 
-	public int pop(){
-		if(top==null){
-			System.out.println("Stack is empty.");
-			return -1;
-		}else{
-			int value = top.value;
+	public boolean isEmpty(){
+		return top==null;
+	}
+	
+	public E pop(){
+			E value = (E)top.value;
 			top = top.next;
 			size--;
 			return value;
-		}
 	}
 
-	public int peek(){
-		if(top==null){
-			System.out.println("Stack is empty.");
-			return -1;
-		}else{
-			return top.value;
-		}
+	public E peek(){
+			return (E)top.value;
 	}
 
 	public int size(){
 		return size;
 	}
-	public int removeBottom(){
+	
+	public E removeBottom(){
 		Node prev = top;
 		Node current = top.next;
 		while(current!=null&&current.next!=null){
 			prev = prev.next;
 			current = current.next;
 		}
-		int value = current.value;
+		E value = current.value;
 		prev.next = null;
 		return value;
 	}
 
 	public static void main(String[] args){
-		Stack ins1 = new Stack();
+		Stack<String> ins1 = new Stack<String>();
 		// Stack ins2 = new Stack(12);
 		// for(int i = 0; i<2; i++){
 		// 	System.out.println(ins1.pop());
 		// 	System.out.println(ins2.pop());
 		// }
 		for(int i = 0; i<12; i++){
-			ins1.push(i);
+			ins1.push("sdfs");
 			// ins2.push(i*10);
 		}
 		// for(int i = 0; i<20; i++){
@@ -84,14 +80,8 @@ public class Stack{
 		System.out.println(ins1.removeBottom());
 		System.out.println(ins1.removeBottom());
 		for(int i = 0; i<13; i++){
+			if(!ins1.isEmpty())
 			System.out.println(ins1.pop());
 		}		
-
-
-
-
 	}
-
-
-
 }
