@@ -15,7 +15,8 @@ public class Queue<T> {
 
 	public T dequeue(){
 		shift();
-		oldStack.pop();
+		T value = oldStack.pop();
+		return value;
 	}
 
 	public boolean isEmpty(){
@@ -27,7 +28,7 @@ public class Queue<T> {
 	}
 
 	private void shift(){
-		if(oldStack.isEmpty){
+		if(oldStack.isEmpty()){
 			while(!newStack.isEmpty()){
 				oldStack.push(newStack.pop());
 			}
@@ -39,7 +40,7 @@ public class Queue<T> {
 		for(int i = 0; i<100; i++){
 			ins.enqueue(i);
 		}
-		while(!ins.isEmpty){
+		while(!ins.isEmpty()){
 			System.out.println(ins.dequeue());
 		}
 
